@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<button id="btn1">js调用kotlin方法</button>
+		<button id="btn2">js调用Kotlin方法(callback)</button>
+		
+	</body>
+	
+	<script>
+		
+		$("#btn1").on("click",function(){
+			console.log("点击了")
+			//对象.方法名(参数)
+			var json = {"name":"html5"};  
+			window.jsInterface.showToast(JSON.stringify(json));
+		});
+	</script>
+</html>
