@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         //第二种通信方式,Kotlin调用H5方法
 
-        //3.加载网页
+        //3.加载网页;在线模板,方便调试
         mWebView.loadUrl("http://10.0.3.2:8080/index.html")
     }
 

@@ -52,11 +52,18 @@ class JavaScriptMethods {
 
             //第二步把获得的数据回传给js;callBack步骤
             //调用js代码必须在主线程中
-            mContext?.let {
-                it.runOnUiThread {
-                    mWebView?.let {
-                        it.loadUrl("javascript:"+callBack+"("+result+")")
-                    }
+            callbackJavaScript(callBack, result)
+        }
+    }
+
+    /**
+     * 统一管理所有kotlin回调
+     */
+    private fun callbackJavaScript(callBack: String?, result: String) {
+        mContext?.let {
+            it.runOnUiThread {
+                mWebView?.let {
+                    it.loadUrl("javascript:" + callBack + "(" + result + ")")
                 }
             }
         }

@@ -33,8 +33,17 @@
 			window.jsInterface.getData(JSON.stringify(json));
 		});
 
+		/**
+		 * 接收从kotlin回传的数据
+		 * @param {Object} json
+		 */
 		var receiveData = function(json){
-			alert(JSON.stringify(json))
+			//alert(JSON.stringify(json))
+
+			//动态刷新数据
+			#("wrapper").html(
+				//各个模块  section[用 单引号括起来,具体数据用json.xxx 填充]
+			)
 		}
 	</script>
 </html>
