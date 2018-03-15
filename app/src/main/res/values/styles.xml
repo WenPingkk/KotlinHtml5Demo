@@ -9,4 +9,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="btm_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/transparent</item>
+        <item name="android:windowAnimationStyle">@style/dialog_anim</item>
+
+    </style>
+    <!--dialog 的动画样式-->
+    <style name="dialog_anim" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
 </resources>

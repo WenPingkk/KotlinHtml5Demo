@@ -8,7 +8,8 @@
 
 <button id="btn1">js调用kotlin方法</button>
 <button id="btn2">js调用Kotlin方法(callback)</button>
-
+<br />
+<button id="phone">调用拨打电话页面</button>
 </body>
 
 <script>
@@ -44,6 +45,17 @@
 			#("wrapper").html(
 				//各个模块  section[用 单引号括起来,具体数据用json.xxx 填充]
 			)
+
 		}
+
+		/**
+		 * 弹出dialog
+		 */
+		$("#phone").on("click",function(){
+			//调用kotlin方法
+			window.jsInterface(showPhoneDialog())
+		});
+
+
 	</script>
 </html>

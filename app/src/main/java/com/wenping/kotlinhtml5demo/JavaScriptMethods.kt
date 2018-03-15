@@ -20,6 +20,10 @@ class JavaScriptMethods {
     private var mContext: Context?= null
     private var mWebView:WebView? = null
 
+    private val mDialog:BottomUpDialog by lazy {
+        BottomUpDialog(mContext)
+    }
+
     constructor(mContext: Context,webView: WebView){
         this.mContext = mContext
         this.mWebView = webView
@@ -67,5 +71,10 @@ class JavaScriptMethods {
                 }
             }
         }
+    }
+
+    @JavascriptInterface
+    fun showPhoneDialog() {
+        mDialog.show()
     }
 }
