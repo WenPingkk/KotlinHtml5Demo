@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         mWebView.webViewClient = WebViewClientImpl()
         mWebView.webChromeClient = WebChromeClientImpl()
         //kotlin和H5通信方式1,H5调用kotlin方法
-        mWebView.addJavascriptInterface(JavaScriptMethods(this@MainActivity),"jsInterface")//参数1:对象:方法名 ,参数2:字符串:参数1对应对象的别名
+        mWebView.addJavascriptInterface(JavaScriptMethods(this@MainActivity,mWebView),"jsInterface")//参数1:对象:方法名 ,参数2:字符串:参数1对应对象的别名
 
         //第二种通信方式,Kotlin调用H5方法
 
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 //            mWebView.loadUrl("javascript:方法名(参数)")
             var json = JSONObject()
             json.put("name", "Kotlin")
+            //调用js代码必须在主线程中
             mWebView.loadUrl("javascript:showMessage("+json+")")
         }
     }
