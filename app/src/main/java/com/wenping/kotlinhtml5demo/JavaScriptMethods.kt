@@ -1,6 +1,8 @@
 package com.wenping.kotlinhtml5demo
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.widget.Toast
@@ -17,23 +19,23 @@ import java.net.URL
  *<p>
  */
 class JavaScriptMethods {
-    private var mContext: Context?= null
-    private var mWebView:WebView? = null
+    private var mContext: Context? = null
+    private var mWebView: WebView? = null
 
-    private val mDialog:BottomUpDialog by lazy {
+    private val mDialog: BottomUpDialog by lazy {
         BottomUpDialog(mContext)
     }
 
-    constructor(mContext: Context,webView: WebView){
+    constructor(mContext: Context, webView: WebView) {
         this.mContext = mContext
         this.mWebView = webView
     }
 
     @JavascriptInterface
-    protected fun showToast(json:String) {
-       mContext?.let {
-           it.toast(json)
-       }
+    protected fun showToast(json: String) {
+        mContext?.let {
+            it.toast(json)
+        }
     }
 
     /**
@@ -42,9 +44,9 @@ class JavaScriptMethods {
      * 2.在子线程中获取具体数据,返回主线程在主线程中把数据回传给js页面
      */
     @JavascriptInterface
-    fun getData(json:String) {
+    fun getData(json: String) {
         //解析
-        var jsJson  = JSONObject(json)
+        var jsJson = JSONObject(json)
         val callBack = jsJson.optString("callback")
         //println("获取数据")
 
@@ -74,7 +76,43 @@ class JavaScriptMethods {
     }
 
     @JavascriptInterface
-    fun showPhoneDialog() {
+    fun showPhoneDialog(phone: String) {
+        /**
+         * mDialog.xx 指的是dialog布局中的textView控件
+         */
+//        mDialog.xx.text = phone
+
+        //dissmissDialog
+//        mDialog.xx.onClick{
+//            mDialog.dismiss()
+//        }
+//        隐式 实现拨号效果
+        //mDialog.yy.onClick{
+//            mContext?.let {
+//                var intent = Intent()
+//                intent.action = "android.intent.action.VIEW"
+//                intent.action = "android.intent.action.DIAL"
+//                intent.addCategory("android.intent.category.DEFAULT")
+//                intent.addCategory("android.intent.DEFAULT")
+//                intent.setData(Uri.parse("tel:$phone"))
+//                it.startActivity(intent)
+//            }
+          //  callPhone(phone)
+        //}
+
         mDialog.show()
+    }
+
+//    lambda表达式实现拨号
+    var callPhone = { phone: String ->
+        var intent = Intent()
+        intent.action = "android.intent.action.VIEW"
+        intent.action = "android.intent.action.DIAL"
+        intent.addCategory("android.intent.category.DEFAULT")
+        intent.addCategory("android.intent.DEFAULT")
+        intent.setData(Uri.parse("tel:$phone"))
+        mContext?.let {
+            it.startActivity(intent)
+        }
     }
 }

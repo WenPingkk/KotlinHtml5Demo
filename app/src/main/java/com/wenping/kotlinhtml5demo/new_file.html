@@ -53,7 +53,8 @@
 		 */
 		$("#phone").on("click",function(){
 			//调用kotlin方法
-			window.jsInterface(showPhoneDialog())
+			var phoneNum = $(this).text();
+			window.jsInterface(showPhoneDialog(phoneNum))
 		});
 
 
