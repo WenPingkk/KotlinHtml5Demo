@@ -17,6 +17,7 @@ class JavaScriptMethods {
     constructor(mContext: Context){
         this.mContext = mContext
     }
+
     @JavascriptInterface
     protected fun showToast(json:String) {
        mContext?.let {
