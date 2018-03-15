@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
         //第二种通信方式,Kotlin调用H5方法
 
         //3.加载网页;在线模板,方便调试
-        mWebView.loadUrl("http://10.0.3.2:8080/index.html")
+        //mWebView.loadUrl("http://10.0.3.2:8080/index.html")
+        //加载本地模板,好处是,加载速率快
+        mWebView.loadUrl("file:///android_asset/kotlin/index.html")
+
     }
 
     inner private class WebViewClientImpl : WebViewClient() {

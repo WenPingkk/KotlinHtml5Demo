@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+<button id="btn1">js调用kotlin方法</button>
+<button id="btn2">js调用Kotlin方法(callback)</button>
+<br />
+<button id="phone">调用拨打电话页面</button>
+</body>
+
+<script>
+
+		$("#btn1").on("click",function(){
+			console.log("点击了")
+			//对象.方法名(参数)
+			var json = {"name":"html5"};
+			window.jsInterface.showToast(JSON.stringify(json));
+		});
+
+		var showMessage = function(json){
+			alert(JSON.stringify(json));
+		};
+
+
+		//H5 callBack 调用kotlin方法
+		$("#btn2").on("click",function(){
+			//callBack:1.调用Kotlin方法\n
+
+			var json = {"callback":"receiveData"}
+			window.jsInterface.getData(JSON.stringify(json));
+		});
+
+		/**
+		 * 接收从kotlin回传的数据
+		 * @param {Object} json
+		 */
+		var receiveData = function(json){
+			//alert(JSON.stringify(json))
+
+			//动态刷新数据
+			#("wrapper").html(
+				//各个模块  section[用 单引号括起来,具体数据用json.xxx 填充]
+			)
+
+		}
+
+		/**
+		 * 弹出dialog
+		 */
+		$("#phone").on("click",function(){
+			//调用kotlin方法
+			var phoneNum = $(this).text();
+			window.jsInterface(showPhoneDialog(phoneNum))
+		});
+
+
+	</script>
+</html>
